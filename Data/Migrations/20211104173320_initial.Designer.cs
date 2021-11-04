@@ -4,14 +4,16 @@ using Data.Concrete.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(FilmDiziDbContext))]
-    partial class FilmDiziDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211104173320_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,16 +33,6 @@ namespace Data.Migrations
 
                     b.Property<double>("IMBD")
                         .HasColumnType("float");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Information")
-                        .HasMaxLength(2000)
-                        .HasColumnType("nvarchar(2000)");
-
-                    b.Property<bool>("IsItMovie")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -64,10 +56,10 @@ namespace Data.Migrations
                     b.Property<DateTime>("AddedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Body")
+                    b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ContentID")
+                    b.Property<int?>("SeriesContentID")
                         .HasColumnType("int");
 
                     b.Property<int?>("UserID")
@@ -75,7 +67,7 @@ namespace Data.Migrations
 
                     b.HasKey("CommentID");
 
-                    b.HasIndex("ContentID");
+                    b.HasIndex("SeriesContentID");
 
                     b.HasIndex("UserID");
 
@@ -120,15 +112,15 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entity.Concrete.ContentComment", b =>
                 {
-                    b.HasOne("Entity.Concrete.Content", "Content")
+                    b.HasOne("Entity.Concrete.Content", "Series")
                         .WithMany()
-                        .HasForeignKey("ContentID");
+                        .HasForeignKey("SeriesContentID");
 
                     b.HasOne("Entity.Concrete.User", "User")
                         .WithMany("ContentComment")
                         .HasForeignKey("UserID");
 
-                    b.Navigation("Content");
+                    b.Navigation("Series");
 
                     b.Navigation("User");
                 });

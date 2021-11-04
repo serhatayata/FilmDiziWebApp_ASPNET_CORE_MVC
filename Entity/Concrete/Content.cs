@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Entity.Concrete
 {
-    public class Series:IEntity
+    public class Content:IEntity
     {
-        public int SeriesID { get; set; }
+        public int ContentID { get; set; }
         [Required(ErrorMessage = "Series name cannot be empty")]
         public string Name { get; set; }
         [DataType(DataType.Date)]
@@ -20,5 +20,10 @@ namespace Entity.Concrete
         public double IMBD { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime AddedTime { get; set; }
+        [MaxLength(2000,ErrorMessage = "This content cannot be more than 2000 characters")]
+        public string Information { get; set; }
+        public string Image { get; set; }
+        [Required(ErrorMessage ="You have to choose if it is a movie or not.")]
+        public bool IsItMovie { get; set; }
     }
 }

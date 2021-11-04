@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Abstract
 {
-    public interface ISeriesCommentRepository:IEntityRepository<SeriesComment>
+    public interface IContentRepository:IEntityRepository<Content>
     {
 
     }

@@ -27,6 +27,7 @@ namespace Entity.Concrete
         [Required]
         [MaxLength(1, ErrorMessage = "Role cannot be more than 1 character")]
         public char Role { get; set; }
+        public virtual ICollection<ContentComment> ContentComment { get; set; }
 
     }
 }

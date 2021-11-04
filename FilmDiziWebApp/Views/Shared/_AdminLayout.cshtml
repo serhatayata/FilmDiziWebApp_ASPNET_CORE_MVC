@@ -1,12 +1,19 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DiziFilmApp</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
 
 </head>
 <body>
@@ -31,10 +38,11 @@
             </form>
         </div>
     </nav>
+
     @RenderBody()
+
 
     <script src="~/lib/jquery/dist/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
-

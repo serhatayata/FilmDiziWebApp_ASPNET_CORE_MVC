@@ -15,10 +15,8 @@ namespace Data.Concrete.EfCore
 
         }
 
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<MovieComment> MovieComments { get; set; }
-        public DbSet<Series> SeriesTb { get; set; }
-        public DbSet<SeriesComment> SeriesComments { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<ContentComment> ContentComments { get; set; }
         public DbSet<User> Users { get; set; }
 
     }

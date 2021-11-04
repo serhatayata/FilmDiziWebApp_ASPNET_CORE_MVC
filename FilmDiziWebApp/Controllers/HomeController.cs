@@ -1,4 +1,6 @@
-﻿using FilmDiziWebApp.Models;
+﻿using Data.Concrete.EfCore;
+using Entity.Concrete;
+using FilmDiziWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,27 +13,43 @@ namespace FilmDiziWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        FilmDiziDbContext db;
+        public HomeController(FilmDiziDbContext _db)
         {
-            _logger = logger;
+            db = _db;
         }
-
-        public IActionResult Index()
+        public IActionResult Index(bool? id)
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (id!= null)
+            {
+                if (db.Contents.Count() > 1)
+                {
+                    if (id==true)
+                    {
+                        var deger = db.Contents.Where(x => x.IsItMovie == true).ToList().OrderByDescending(x => x.AddedTime);
+                        return View("Index", deger);
+                    }
+                    else
+                    {
+                        var deger = db.Contents.Where(x => x.IsItMovie == false).ToList().OrderByDescending(x=>x.AddedTime);
+                        return View("Index", deger);
+                    }
+                }
+                else if (db.Contents.Count() == 1)
+                {
+                    var deger = db.Contents.Where(x => x.IsItMovie == false).FirstOrDefault();
+                    return View("Index", deger);
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                var deger = db.Contents.ToList().OrderByDescending(x => x.AddedTime);
+                return View(deger);
+            }
         }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(FilmDiziDbContext))]
-    [Migration("20211104160006_initial")]
-    partial class initial
+    [Migration("20211104174111_initial3")]
+    partial class initial3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,63 +21,9 @@ namespace Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Entity.Concrete.Movie", b =>
+            modelBuilder.Entity("Entity.Concrete.Content", b =>
                 {
-                    b.Property<int>("MovieID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("AddedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("IMDB")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Year")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("MovieID");
-
-                    b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("Entity.Concrete.MovieComment", b =>
-                {
-                    b.Property<int>("MovieCommentID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("AddedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("MovieID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("MovieCommentID");
-
-                    b.HasIndex("MovieID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("MovieComments");
-                });
-
-            modelBuilder.Entity("Entity.Concrete.Series", b =>
-                {
-                    b.Property<int>("SeriesID")
+                    b.Property<int>("ContentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -88,6 +34,10 @@ namespace Data.Migrations
                     b.Property<double>("IMBD")
                         .HasColumnType("float");
 
+                    b.Property<string>("Information")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -95,14 +45,14 @@ namespace Data.Migrations
                     b.Property<DateTime>("Year")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("SeriesID");
+                    b.HasKey("ContentID");
 
-                    b.ToTable("SeriesTb");
+                    b.ToTable("Contents");
                 });
 
-            modelBuilder.Entity("Entity.Concrete.SeriesComment", b =>
+            modelBuilder.Entity("Entity.Concrete.ContentComment", b =>
                 {
-                    b.Property<int>("SeriesCommentID")
+                    b.Property<int>("CommentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -110,22 +60,22 @@ namespace Data.Migrations
                     b.Property<DateTime>("AddedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Content")
+                    b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SeriesID")
+                    b.Property<int?>("ContentID")
                         .HasColumnType("int");
 
                     b.Property<int?>("UserID")
                         .HasColumnType("int");
 
-                    b.HasKey("SeriesCommentID");
+                    b.HasKey("CommentID");
 
-                    b.HasIndex("SeriesID");
+                    b.HasIndex("ContentID");
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("SeriesComments");
+                    b.ToTable("ContentComments");
                 });
 
             modelBuilder.Entity("Entity.Concrete.User", b =>
@@ -164,34 +114,24 @@ namespace Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Entity.Concrete.MovieComment", b =>
+            modelBuilder.Entity("Entity.Concrete.ContentComment", b =>
                 {
-                    b.HasOne("Entity.Concrete.Movie", "Movie")
+                    b.HasOne("Entity.Concrete.Content", "Content")
                         .WithMany()
-                        .HasForeignKey("MovieID");
+                        .HasForeignKey("ContentID");
 
                     b.HasOne("Entity.Concrete.User", "User")
-                        .WithMany()
+                        .WithMany("ContentComment")
                         .HasForeignKey("UserID");
 
-                    b.Navigation("Movie");
+                    b.Navigation("Content");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Entity.Concrete.SeriesComment", b =>
+            modelBuilder.Entity("Entity.Concrete.User", b =>
                 {
-                    b.HasOne("Entity.Concrete.Series", "Series")
-                        .WithMany()
-                        .HasForeignKey("SeriesID");
-
-                    b.HasOne("Entity.Concrete.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID");
-
-                    b.Navigation("Series");
-
-                    b.Navigation("User");
+                    b.Navigation("ContentComment");
                 });
 #pragma warning restore 612, 618
         }

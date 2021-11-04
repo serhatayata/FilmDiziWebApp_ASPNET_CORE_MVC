@@ -9,29 +9,29 @@ using System.Threading.Tasks;
 
 namespace Data.Concrete.EfCore
 {
-    public class EfSeriesRepository : ISeriesRepository
+    public class EfContentRepository : IContentRepository
     {
-        public void Add(Series entity)
+        public void Add(Content entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Series entity)
+        public void Delete(Content entity)
         {
             throw new NotImplementedException();
         }
 
-        public Series Get(Expression<Func<Series, bool>> filter)
+        public Content Get(Expression<Func<Content, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public List<Series> GetAll(Expression<Func<Series, bool>> filter = null)
+        public List<Content> GetAll(Expression<Func<Content, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Series entity)
+        public void Update(Content entity)
         {
             throw new NotImplementedException();
         }

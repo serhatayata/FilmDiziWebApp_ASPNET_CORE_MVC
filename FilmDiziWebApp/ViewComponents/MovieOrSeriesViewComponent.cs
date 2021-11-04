@@ -1,24 +1,22 @@
 ﻿using Data.Concrete.EfCore;
-using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FilmDiziWebApp.Controllers
+namespace FilmDiziWebApp.ViewComponents
 {
-    public class AdminController : Controller
+    public class MovieOrSeriesViewComponent:ViewComponent
     {
         private FilmDiziDbContext db;
-        public AdminController(FilmDiziDbContext _db)
+        public MovieOrSeriesViewComponent(FilmDiziDbContext _db)
         {
             db = _db;
         }
-        public IActionResult Index()
+        public IViewComponentResult Invoke()
         {
-            var deger = db.Users.ToList();
-            return View(deger);
+            return View();
         }
     }
 }

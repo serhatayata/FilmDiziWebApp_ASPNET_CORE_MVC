@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Abstract
 {
-    public interface IMovieRepository:IEntityRepository<Movie>
+    public interface IContentCommentRepository:IEntityRepository<ContentComment>
     {
 
     }

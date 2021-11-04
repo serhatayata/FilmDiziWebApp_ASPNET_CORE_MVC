@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Entity.Concrete
 {
-    public class SeriesComment:IEntity
+    public class ContentComment:IEntity
     {
         [Key]
-        public int SeriesCommentID { get; set; }
-        public User User { get; set; }
+        public int CommentID { get; set; }
+        public virtual User User { get; set; }
         [Required(ErrorMessage = "Content cannot be empty")]
-        public Series Series { get; set; }
-        public string Content { get; set; }
+        public Content Content { get; set; }
+        public string Body { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime AddedTime { get; set; }

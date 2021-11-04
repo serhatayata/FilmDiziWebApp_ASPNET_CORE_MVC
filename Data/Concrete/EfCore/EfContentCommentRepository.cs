@@ -9,29 +9,29 @@ using System.Threading.Tasks;
 
 namespace Data.Concrete.EfCore
 {
-    public class EfMovieCommentRepository : IMovieCommentRepository
+    public class EfContentCommentRepository : IContentCommentRepository
     {
-        public void Add(MovieComment entity)
+        public void Add(ContentComment entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(MovieComment entity)
+        public void Delete(ContentComment entity)
         {
             throw new NotImplementedException();
         }
 
-        public MovieComment Get(Expression<Func<MovieComment, bool>> filter)
+        public ContentComment Get(Expression<Func<ContentComment, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public List<MovieComment> GetAll(Expression<Func<MovieComment, bool>> filter = null)
+        public List<ContentComment> GetAll(Expression<Func<ContentComment, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(MovieComment entity)
+        public void Update(ContentComment entity)
         {
             throw new NotImplementedException();
         }
