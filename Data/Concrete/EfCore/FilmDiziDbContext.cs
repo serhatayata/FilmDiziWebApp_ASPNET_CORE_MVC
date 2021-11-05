@@ -14,11 +14,11 @@ namespace Data.Concrete.EfCore
         {
 
         }
-        public DbSet<Content> Contents { get; set; }
-        public DbSet<ContentComment> ContentComments { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<AboutUs> AboutUss { get; set; }
+        public virtual DbSet<Content> Contents { get; set; }
+        public virtual DbSet<ContentComment> ContentComments { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<AboutUs> AboutUss { get; set; }
 
     }
 }

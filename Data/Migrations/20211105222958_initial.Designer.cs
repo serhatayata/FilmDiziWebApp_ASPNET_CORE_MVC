@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(FilmDiziDbContext))]
-    [Migration("20211105194609_initial5")]
-    partial class initial5
+    [Migration("20211105222958_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -136,6 +136,7 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -144,7 +145,8 @@ namespace Data.Migrations
                         .HasMaxLength(24)
                         .HasColumnType("nvarchar(24)");
 
-                    b.Property<int>("RePassword")
+                    b.Property<int?>("RePassword")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Role")
@@ -152,6 +154,7 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TermsAccepted")

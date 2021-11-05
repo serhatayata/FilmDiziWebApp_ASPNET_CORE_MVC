@@ -10,7 +10,8 @@
         <h4 class="card-title pt-3 pl-3 pb-1 font-weight-bold text-white text-center">Register</h4>
         <div class="card-body">
             <form asp-controller="Register" asp-action="Index" method="post">
-                <input asp-for="Role" hidden />
+                <input asp-for="Role" type="hidden" />
+                <input asp-for="UserID" type="hidden" />
                 <div class="form-group">
                     <label class="text-white">Name</label>
                     <div><span class="text-danger" asp-validation-for="Name"></span></div>
@@ -19,31 +20,38 @@
                 <div class="form-group">
                     <label class="text-white">Surname</label>
                     <div><span class="text-danger" asp-validation-for="Surname"></span></div>
-                    <input asp-for="Surname" class="form-control" formaction="Index"  />
+                    <input asp-for="Surname" class="form-control" formaction="Index" />
                 </div>
                 <div class="form-group">
                     <label class="text-white">Username</label>
                     <div><span class="text-danger" asp-validation-for="Username"></span></div>
-                    <input asp-for="Username" class="form-control" formaction="Index"  />
+                    <input asp-for="Username" class="form-control" formaction="Index" />
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Email</label>
+                    <div><span class="text-danger" asp-validation-for="Email"></span></div>
+                    <input asp-for="Email" class="form-control" formaction="Index" />
                 </div>
                 <div class="form-group">
                     <label class="text-white">Password</label>
                     <div><span class="text-danger" asp-validation-for="Password"></span></div>
-                    <input type="password" asp-for="Password" class="form-control" formaction="Index"  />
+                    <input type="password" asp-for="Password" class="form-control" formaction="Index" />
                 </div>
                 <div class="form-group">
-                    <label class="text-white">RePassword</label>
-                    <div><span class="text-danger" asp-validation-for="RePassword"></span></div>
-                    <input type="password" asp-for="RePassword" class="form-control" formaction="Index"  />
-                </div>
-                <div class="radio form-group">
-                    <input asp-for="TermsAccepted"  formaction="Index" />
-                    <label asp-for="TermsAccepted" class="form-check-label">
+                    <div><span class="text-danger" asp-validation-for="TermsAccepted"></span></div>
+                    <input asp-for="TermsAccepted" formaction="Index" />
+                    <label asp-for="TermsAccepted" class="form-check-label text-white">
                         I accept the terms and conditions
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" name="registerButton" class="btn btn-primary">Sign in</button>
             </form>
         </div>
     </div>
 </div>
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/popper.js/umd/popper.js"></script>
+}
