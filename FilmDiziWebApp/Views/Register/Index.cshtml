@@ -1,0 +1,49 @@
+﻿
+@model User
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="card mb-5 bg-dark p-4">
+        <h4 class="card-title pt-3 pl-3 pb-1 font-weight-bold text-white text-center">Register</h4>
+        <div class="card-body">
+            <form asp-controller="Register" asp-action="Index" method="post">
+                <input asp-for="Role" hidden />
+                <div class="form-group">
+                    <label class="text-white">Name</label>
+                    <div><span class="text-danger" asp-validation-for="Name"></span></div>
+                    <input asp-for="Name" class="form-control" formaction="Index" />
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Surname</label>
+                    <div><span class="text-danger" asp-validation-for="Surname"></span></div>
+                    <input asp-for="Surname" class="form-control" formaction="Index"  />
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Username</label>
+                    <div><span class="text-danger" asp-validation-for="Username"></span></div>
+                    <input asp-for="Username" class="form-control" formaction="Index"  />
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Password</label>
+                    <div><span class="text-danger" asp-validation-for="Password"></span></div>
+                    <input type="password" asp-for="Password" class="form-control" formaction="Index"  />
+                </div>
+                <div class="form-group">
+                    <label class="text-white">RePassword</label>
+                    <div><span class="text-danger" asp-validation-for="RePassword"></span></div>
+                    <input type="password" asp-for="RePassword" class="form-control" formaction="Index"  />
+                </div>
+                <div class="radio form-group">
+                    <input asp-for="TermsAccepted"  formaction="Index" />
+                    <label asp-for="TermsAccepted" class="form-check-label">
+                        I accept the terms and conditions
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -18,7 +18,7 @@ namespace Data.Concrete.EfCore
         public DbSet<ContentComment> ContentComments { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<AboutUs> AboutUss { get; set; }
 
     }
 }

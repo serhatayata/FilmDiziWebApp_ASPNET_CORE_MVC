@@ -4,14 +4,16 @@ using Data.Concrete.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(FilmDiziDbContext))]
-    partial class FilmDiziDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211105183259_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,21 +141,16 @@ namespace Data.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(24)
-                        .HasColumnType("nvarchar(24)");
-
-                    b.Property<int>("RePassword")
-                        .HasColumnType("int");
+                        .HasMaxLength(21)
+                        .HasColumnType("nvarchar(21)");
 
                     b.Property<string>("Role")
                         .IsRequired()
+                        .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TermsAccepted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Username")
                         .IsRequired()

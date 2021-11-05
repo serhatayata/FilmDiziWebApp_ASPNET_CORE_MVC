@@ -7,8 +7,11 @@ body {
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
 }
 .home-dropdown {
-    margin-right:50px !important;
+    margin-right:10px !important;
 }
 .pl-3 {
     padding-left:30px;
+}
+.details_info {
+    text-align:justify;
 }

@@ -3,8 +3,6 @@
     Layout = null;
 }
 
-
-
 <div class="bg-dark rounded text-white rounded pb-2">
     <span class="list-group-item bg-info text-white">Login</span>
     <form asp-controller="Login" asp-action="Login" method="post" class="container p-3">
@@ -16,11 +14,11 @@
         <div class="form-group">
             <label>Password</label>
             <div><span class="text-danger" asp-validation-for="Password"></span></div>
-            <input type="password" class="form-control" asp-for="Password" placeholder="Enter your password">
+            <input type="password" class="form-control" asp-for="Password" placeholder="Enter your password" >
         </div>
         <div class="loginButton d-flex justify-content-around">
             <button type="submit" class="btn btn-outline-info">Login</button>
-            <button asp-controller="Login" asp-action="Register" formmethod="get" class="btn btn-outline-primary">Register</button>
+            <button asp-controller="Register" asp-action="Index" formmethod="get" class="btn btn-outline-primary">Register</button>
         </div>
     </form>
 </div>

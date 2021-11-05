@@ -76,7 +76,7 @@ namespace FilmDiziWebApp.Controllers
                 
                 case "0": deger = deger.Where(x => x.Year <= (new DateTime(2001,1,1))).ToList();  break;
                 case "1": deger = deger.Where(x => x.Year < (new DateTime(2006, 1, 1)) && x.Year > (new DateTime(2001,1,1))).ToList(); break;
-                case "2": deger = deger.Where(x => x.Year <= (new DateTime(2012, 1, 1)) && x.Year >= (new DateTime(2006, 1, 1))).ToList(); break;
+                case "2": deger = deger.Where(x => x.Year <= (new DateTime(2012, 1, 1)) && x.Year > (new DateTime(2006, 1, 1))).ToList(); break;
                 case "3": deger = deger.Where(x => x.Year <= (new DateTime(2018, 1, 1)) && x.Year > (new DateTime(2012, 1, 1))).ToList(); break;
                 case "4": deger = deger.Where(x => x.Year < DateTime.Now && x.Year > (new DateTime(2018, 1, 1))).ToList(); break;
                 default: deger = deger.ToList();
@@ -90,6 +90,17 @@ namespace FilmDiziWebApp.Controllers
             return View(db.Categories.ToList());
         }
 
+        public IActionResult Details(int id)
+        {
+            var deger = db.Contents.Where(x => x.ContentID == id).FirstOrDefault();
+            return View(deger);
+        }
+
+        public IActionResult AboutUs()
+        {
+            var deger = db.AboutUss.ToList().FirstOrDefault();
+            return View(deger);
+        }
 
     }
 }
