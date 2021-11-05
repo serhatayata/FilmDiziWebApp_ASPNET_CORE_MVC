@@ -18,6 +18,7 @@ namespace Entity.Concrete
         [MinLength(8, ErrorMessage = "Password cannot be less than 8 characters")]
         public string Password { get; set; }
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only please")]
+        [StringLength(150, ErrorMessage = "Name length can't be less than 1 or greater than 150 characters.", MinimumLength = 1)]
         public string Name { get; set; }
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only please")]
         public string Surname { get; set; }

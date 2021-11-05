@@ -1,23 +1,23 @@
 ﻿using Data.Concrete.EfCore;
-using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FilmDiziWebApp.ViewComponents
+namespace FilmDiziWebApp.Controllers
 {
-    public class LoginViewComponent:ViewComponent
+    public class CategoryController : Controller
     {
         private FilmDiziDbContext db;
-        public LoginViewComponent(FilmDiziDbContext _db)
+        public CategoryController(FilmDiziDbContext _db)
         {
             db = _db;
         }
-        public IViewComponentResult Invoke()
+        public IActionResult Index()
         {
-            return View(new LoginModel());
+            var deger = db.Categories.ToList();
+            return View(deger);
         }
     }
 }

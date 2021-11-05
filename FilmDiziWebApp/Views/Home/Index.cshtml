@@ -4,31 +4,20 @@
 }
 @model IEnumerable<Content>
 
-<div class="p-3 m-3">
-    <div class="row">
-        <div class="col-sm-3">
-            @await Component.InvokeAsync("MovieOrSeries")
-            <br />
-            @await Component.InvokeAsync("MovieContent")
-            <br />
-            @await Component.InvokeAsync("SeriesContent")
-        </div>
-        <div class="col-sm-9">
-            @foreach (var item in Model)
-            {
-            <div class="card mb-5 bg-dark">
-                <h5 class="card-title pt-3 pl-3 pb-1 font-weight-bold text-white">@item.Name</h5>
-                <img class="card-img-top" src="@item.Image" alt="Card image cap" style="width:100%; height:50vh">
-                <div class="card-body">
-                    <p class="card-text text-white"><strong>IMDB :</strong> @item.IMBD /<strong> Year :</strong> @item.Year.ToString("yyyy") </p>
-                    <a href="#" class="btn btn-info">Details</a>
-                </div>
+
+@foreach (var item in Model)
+{
+    <div class="col-4">
+        <div class="card mb-5 bg-dark p-4 text-center">
+            <h5 class="card-title pt-3 pl-3 pb-1 font-weight-bold text-white">@item.Name</h5>
+            <img class="card-img-top" src="@item.Image" alt="Card image cap" style="width:100%; height:30vh; max-height:30vh">
+            <div class="card-body">
+                <p class="card-text text-white"><strong>IMDB :</strong> @item.IMBD /<strong> Year :</strong> @item.Year.ToString("yyyy") </p>
+                <a href="#" class="btn btn-outline-info">Details</a>
             </div>
-            }
         </div>
     </div>
-</div>
-
+}
 
 
 

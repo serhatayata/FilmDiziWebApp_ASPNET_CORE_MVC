@@ -6,7 +6,9 @@
     <title>DiziFilmApp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
@@ -19,22 +21,54 @@
         <div class="collapse navbar-collapse pl-5" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item pl-3">
-                    <a class="nav-link" href="#">Link</a>
+                <li class="nav-item dropdown pl-3">
+                    <a class="nav-link text-white" asp-controller="Category" asp-action="Index">Categories <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div class="dropdown show my-2 my-sm-0">
+                <a class="btn btn-secondary dropdown-toggle home-dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Settings
+                </a>
+
+                <div class="dropdown-menu home-dropdown-2" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">About</a>
+                    <hr />
+                    <a class="dropdown-item" href="#">Help</a>
+                </div>
+            </div>
         </div>
     </nav>
-    @RenderBody()
 
-    <script src="~/lib/jquery/dist/jquery/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/bootstrap/js/bootstrap.js"></script>
+
+    <div class="p-3 m-3">
+        <div class="row">
+            <div class="col-sm-3">
+                @await Component.InvokeAsync("Login")
+                <br />
+                @await Component.InvokeAsync("Filter")
+                <br />
+                @await Component.InvokeAsync("MovieOrSeries")
+                <br />
+                @await Component.InvokeAsync("MovieContent")
+                <br />
+                @await Component.InvokeAsync("SeriesContent")
+            </div>
+            <div class="col-sm-9 container-fluid">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="~/lib/popper.js/umd/popper.js"></script>
+    <script src="~/lib/popper.js/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 </body>
 </html>
 

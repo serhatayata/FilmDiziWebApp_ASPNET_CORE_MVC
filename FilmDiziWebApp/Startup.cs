@@ -29,7 +29,7 @@ namespace FilmDiziWebApp
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddDbContext<FilmDiziDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), y => y.MigrationsAssembly("Data")));
         }
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

@@ -16,7 +16,7 @@ namespace FilmDiziWebApp.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
-            return View(db.Contents.Where(x=>x.IsItMovie==true).ToList().Take(5));
+            return View(db.Contents.Where(x => x.IsItMovie == true).ToList().Take(5));
         }
     }
 }

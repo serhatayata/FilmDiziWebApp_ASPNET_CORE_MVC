@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="col-4">
+        <div class="card mb-4 bg-dark p-1 text-center">
+            <img  class="card-img-top" src="@item.Images" alt="Card image cap" style="width:100%; height:30vh; max-height:30vh">
+            <div class="card-body">
+                <form asp-controller="Home" asp-action="Filter" method="post">
+                    <input name="CategoryID" value="@item.CategoryID" hidden />
+                    <button class="btn btn-outline-info" type="submit">@item.CategoryName</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+
