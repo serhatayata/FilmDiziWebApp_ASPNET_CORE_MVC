@@ -59,7 +59,7 @@ namespace FilmDiziWebApp.Controllers
                     {
                         var principal = new ClaimsPrincipal(identity);
                         var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "User");
                     }
 
                 }

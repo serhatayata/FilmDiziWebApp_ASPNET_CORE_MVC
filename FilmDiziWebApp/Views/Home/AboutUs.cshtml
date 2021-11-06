@@ -1,8 +1,17 @@
 ﻿@model AboutUs
 
 @{
-    ViewData["Title"] = "AboutUs";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (User.Identity.IsAuthenticated)
+    {
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+    else
+    {
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
 
 <div class="container-fluid">

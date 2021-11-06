@@ -10,6 +10,14 @@ namespace Data.Concrete.EfCore
 {
     public class FilmDiziDbContext:DbContext
     {
+        public FilmDiziDbContext()
+        {
+
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+
+        }
         public FilmDiziDbContext(DbContextOptions<FilmDiziDbContext> options):base(options)
         {
 

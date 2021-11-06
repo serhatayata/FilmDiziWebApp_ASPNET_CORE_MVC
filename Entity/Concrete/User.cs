@@ -1,4 +1,5 @@
-﻿using Entity.Infrastructure;
+﻿using Core.Entities;
+using Entity.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Entity.Concrete
 {
-    public class User
+    public class User:IEntity
     {
         [Key]
         public int UserID { get; set; }

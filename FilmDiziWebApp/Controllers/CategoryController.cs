@@ -20,5 +20,11 @@ namespace FilmDiziWebApp.Controllers
             var deger = db.Categories.ToList();
             return View(deger);
         }
+        //[Authorize(Roles ="B")]
+        //public IActionResult UserIndex()
+        //{
+        //    var deger = db.Categories.ToList();
+        //    return View(deger);
+        //}
     }
 }

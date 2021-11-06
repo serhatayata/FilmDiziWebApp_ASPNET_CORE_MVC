@@ -1,19 +1,28 @@
 ﻿@model Content
 
 @{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (User.Identity.IsAuthenticated)
+    {
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+    else
+    {
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
 
-  <div class="container-fluid">
-        <div class="card mb-5 bg-dark p-4 text-center">
-            <h5 class="card-title pt-3 pl-3 pb-1 font-weight-bold text-white">@Model.Name</h5>
-            <img class="card-img-top" src="@Model.Image" alt="Card image cap" style="width:100%; height:50vh; max-height:50vh">
-            <div class="card-body">
-                <p class="card-text text-white"><strong>IMDB :</strong> @Model.IMBD /<strong> Year :</strong> @Model.Year.ToString("yyyy") </p>
-                <hr />
-                <h2 class="card-text text-white">Information</h2><br />
-                <p class="card-text text-white details_info">@Model.Information</p>
-            </div>
+<div class="container-fluid">
+    <div class="card mb-5 bg-dark p-4 text-center">
+        <h5 class="card-title pt-3 pl-3 pb-1 font-weight-bold text-white">@Model.Name</h5>
+        <img class="card-img-top" src="@Model.Image" alt="Card image cap" style="width:100%; height:50vh; max-height:50vh">
+        <div class="card-body">
+            <p class="card-text text-white"><strong>IMDB :</strong> @Model.IMBD /<strong> Year :</strong> @Model.Year.ToString("yyyy") </p>
+            <hr />
+            <h2 class="card-text text-white">Information</h2><br />
+            <p class="card-text text-white details_info">@Model.Information</p>
         </div>
     </div>
+</div>

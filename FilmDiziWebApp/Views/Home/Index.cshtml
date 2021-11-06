@@ -1,17 +1,27 @@
 ﻿@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (User.Identity.IsAuthenticated)
+    {
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+    else
+    {
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
+
 @model IEnumerable<Content>
 @if (TempData["error1"] != null)
 {
-<div class="container">
-    <div class="bg-info p-3">
-        <h3>@TempData["error1"].ToString()</h3>
+    <div class="container">
+        <div class="bg-info p-3">
+            <h3>@TempData["error1"].ToString()</h3>
+        </div>
+        <br />
     </div>
-    <br />
-</div>
-   
+
 }
 
 @foreach (var item in Model)

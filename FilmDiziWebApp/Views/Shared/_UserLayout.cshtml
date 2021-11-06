@@ -29,10 +29,12 @@
                 </li>
             </ul>
             <div class="dropdown show my-2 my-sm-0">
-                <a class="btn btn-secondary dropdown-toggle home-dropdown" style="width:150px" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Settings
+                <a class="btn btn-secondary dropdown-toggle home-dropdown" style="width:180px" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span class="text-white">Profil (@User.Identity.Name)</span>
+                    }
                 </a>
-
                 <div class="dropdown-menu home-dropdown-2" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="/Home/AboutUs">About</a>
                     <a asp-controller="Login" asp-action="Logout" class="dropdown-item">Logout</a>
