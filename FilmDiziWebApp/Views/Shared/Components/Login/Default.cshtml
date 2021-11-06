@@ -11,14 +11,14 @@
             <div><span class="text-danger" asp-validation-for="UserName"></span></div>
             <input asp-for="UserName" class="form-control" aria-describedby="emailHelp" placeholder="Enter your username">
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label>Password</label>
             <div><span class="text-danger" asp-validation-for="Password"></span></div>
-            <input type="password" class="form-control" asp-for="Password" placeholder="Enter your password" >
+            <input type="password" class="form-control" asp-for="Password" placeholder="Enter your password">
         </div>
-        <div class="loginButton d-flex justify-content-around">
+        <div class="loginButton">
             <button type="submit" class="btn btn-outline-info">Login</button>
-            <a name="loginButton" href="/Register/Index" formmethod="get" class="btn btn-outline-primary">Register</a>
+            <a name="loginButton" href="/Register/Index" formmethod="get" class="btn btn-outline-primary m-lg-2">Register</a>
         </div>
     </form>
 </div>

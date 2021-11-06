@@ -3,7 +3,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model IEnumerable<Content>
-
+@if (TempData["error1"] != null)
+{
+<div class="container">
+    <div class="bg-info p-3">
+        <h3>@TempData["error1"].ToString()</h3>
+    </div>
+    <br />
+</div>
+   
+}
 
 @foreach (var item in Model)
 {
@@ -13,13 +22,10 @@
             <img class="card-img-top" src="@item.Image" alt="Card image cap" style="width:100%; height:30vh; max-height:30vh">
             <div class="card-body">
                 <p class="card-text text-white"><strong>IMDB :</strong> @item.IMBD /<strong> Year :</strong> @item.Year.ToString("yyyy") </p>
-                <a href="Home/Details/@item.ContentID" class="btn btn-outline-info">Details</a>
+                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.ContentID" class="btn btn-outline-info">Details</a>
             </div>
         </div>
     </div>
 }
-
-
-
 
 

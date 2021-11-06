@@ -2,6 +2,7 @@
 using Entity.Concrete;
 using FilmDiziWebApp.Models;
 using FilmDiziWebApp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -95,12 +96,16 @@ namespace FilmDiziWebApp.Controllers
             var deger = db.Contents.Where(x => x.ContentID == id).FirstOrDefault();
             return View(deger);
         }
-
         public IActionResult AboutUs()
         {
             var deger = db.AboutUss.ToList().FirstOrDefault();
             return View(deger);
         }
+
+
+
+
+        
 
     }
 }

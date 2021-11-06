@@ -1,4 +1,5 @@
 using Data.Concrete.EfCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Http;
 namespace FilmDiziWebApp
 {
     public class Startup
@@ -25,9 +26,16 @@ namespace FilmDiziWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+
+            });
             services.AddControllersWithViews();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddDbContext<FilmDiziDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), y => y.MigrationsAssembly("Data")));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +55,7 @@ namespace FilmDiziWebApp
             app.UseStaticFiles();
             app.UseStatusCodePages();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseMvc(
