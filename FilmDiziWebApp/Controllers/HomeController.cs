@@ -59,6 +59,20 @@ namespace FilmDiziWebApp.Controllers
                 return View(deger);
             }
         }
+        #nullable enable
+        [HttpPost]
+        public IActionResult SearchContent(string? Search)
+        {
+            if (Search != null)
+            {
+                var contents = cont.GetAll(x => x.Name.ToLower().Contains(Search.ToLower()) && x.isDeleted == false);
+                return View("Index",contents);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
         public IActionResult Filter(string type,FilterViewModel f,string year)
         {
             IEnumerable<Content> deger = cont.GetAll().Where(x=>x.isDeleted==false);
