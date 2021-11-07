@@ -59,6 +59,7 @@ namespace FilmDiziWebApp.Controllers
                 return View(deger);
             }
         }
+        //Search
         #nullable enable
         [HttpPost]
         public IActionResult SearchContent(string? Search)
