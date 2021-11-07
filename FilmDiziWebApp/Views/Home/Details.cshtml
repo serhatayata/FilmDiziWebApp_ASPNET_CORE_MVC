@@ -27,3 +27,40 @@
     </div>
 </div>
 
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                Make a comment
+            </div>
+            <div class="card-body bg-dark text-white">
+                <form asp-controller="Comment" asp-action="CreateComment">
+                    <input name="ContentID" value="@Model.ContentID" hidden />
+                    <input name="Username" value="@ViewBag.username" hidden />
+                    <div class="form-group">
+                        <textarea name="body" id="body" class="form-control" placeholder="Enter a comment" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-info">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                Comments
+            </div>
+            @await Component.InvokeAsync("ContentComment",new { contentID = Model.ContentID }) 
+            @*<partial name="_DetailsPartial" model="@ViewData["cm"]">*@
+        </div>
+    </div>
+
+

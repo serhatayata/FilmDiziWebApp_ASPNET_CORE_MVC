@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace FilmDiziWebApp.Controllers
@@ -98,6 +99,13 @@ namespace FilmDiziWebApp.Controllers
 
         public IActionResult Details(int id)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var identity = (ClaimsIdentity)User.Identity;
+                string username = identity.Claims.ToList()[0].Value;
+                ViewBag.username = username;
+            }
+            ViewData["cm"] = cm.GetAll(x => x.ContentID == id);
             var deger = cont.Get(x=>x.ContentID==id && x.isDeleted==false);
             return View(deger);
         }
@@ -106,6 +114,7 @@ namespace FilmDiziWebApp.Controllers
             var deger = abt.GetAll().FirstOrDefault();
             return View(deger);
         }
+        
 
     }
 }

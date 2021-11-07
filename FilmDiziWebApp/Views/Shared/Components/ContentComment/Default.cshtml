@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ContentComment>
+
+@foreach (var item in Model)
+{
+
+    <div class="card-body bg-dark text-white">
+        <blockquote class="blockquote mb-0">
+            <p>@item.Body</p>
+            <footer class="blockquote-footer">@item.AddedTime.ToString("d")</footer>
+        </blockquote>
+    </div>
+}
+
+
+
+
+
