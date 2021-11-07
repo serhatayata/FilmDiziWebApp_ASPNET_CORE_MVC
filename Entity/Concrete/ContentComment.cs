@@ -12,13 +12,17 @@ namespace Entity.Concrete
     {
         [Key]
         public int CommentID { get; set; }
-        public virtual User User { get; set; }
+       
+        public int ContentID { get; set; }
         [Required(ErrorMessage = "Content cannot be empty")]
-        public Content Content { get; set; }
+        public virtual Content Content { get; set; }
+      
         public string Body { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime AddedTime { get; set; }
         public bool isDeleted { get; set; }
+        public int UserID { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace FilmDiziWebApp.Controllers
         EfAboutUsRepository abt = new EfAboutUsRepository();
         EfContentRepository cont = new EfContentRepository();
         EfUserRepository usr = new EfUserRepository() ;
+        EfContentCommentRepository cm = new EfContentCommentRepository();
         FilmDiziDbContext db;
         public HomeController(FilmDiziDbContext _db)
         {
