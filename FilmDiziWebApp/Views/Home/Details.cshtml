@@ -22,7 +22,7 @@
             <p class="card-text text-white"><strong>IMDB :</strong> @Model.IMBD /<strong> Year :</strong> @Model.Year.ToString("yyyy") </p>
             <hr />
             <h2 class="card-text text-white">Information</h2><br />
-            <p class="card-text text-white details_info">@Model.Information</p>
+            <p class="card-text text-white details_info"><div class="text-white">@Html.Raw(Model.Information)</div></p>
         </div>
     </div>
 </div>

@@ -9,11 +9,6 @@ namespace FilmDiziWebApp.ViewComponents
 {
     public class MovieOrSeriesViewComponent:ViewComponent
     {
-        private FilmDiziDbContext db;
-        public MovieOrSeriesViewComponent(FilmDiziDbContext _db)
-        {
-            db = _db;
-        }
         public IViewComponentResult Invoke()
         {
             return View();

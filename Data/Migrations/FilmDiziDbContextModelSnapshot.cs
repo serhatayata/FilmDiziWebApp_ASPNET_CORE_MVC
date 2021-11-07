@@ -30,6 +30,9 @@ namespace Data.Migrations
                         .HasMaxLength(3000)
                         .HasColumnType("nvarchar(3000)");
 
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("AboutUsID");
 
                     b.ToTable("AboutUss");
@@ -47,6 +50,9 @@ namespace Data.Migrations
 
                     b.Property<string>("Images")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("CategoryID");
 
@@ -87,6 +93,9 @@ namespace Data.Migrations
                     b.Property<DateTime>("Year")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("ContentID");
 
                     b.HasIndex("CategoryID");
@@ -112,6 +121,9 @@ namespace Data.Migrations
 
                     b.Property<int?>("UserID")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("CommentID");
 
@@ -144,8 +156,7 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(24)");
 
                     b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
@@ -157,6 +168,9 @@ namespace Data.Migrations
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("UserID");
 

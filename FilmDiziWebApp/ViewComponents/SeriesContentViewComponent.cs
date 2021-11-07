@@ -9,14 +9,10 @@ namespace FilmDiziWebApp.ViewComponents
 {
     public class SeriesContentViewComponent:ViewComponent
     {
-        private FilmDiziDbContext db;
-        public SeriesContentViewComponent(FilmDiziDbContext _db)
-        {
-            db = _db;
-        }
+        EfContentRepository ef = new EfContentRepository();
         public IViewComponentResult Invoke()
         {
-            return View(db.Contents.Where(x=>x.IsItMovie==false).ToList().Take(5));
+            return View(ef.GetAll().Where(x => x.IsItMovie == false && x.isDeleted == false).Take(5));
         }
     }
 }

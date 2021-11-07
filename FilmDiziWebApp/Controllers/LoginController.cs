@@ -19,11 +19,12 @@ namespace FilmDiziWebApp.Controllers
         {
             db = _db;
         }
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
-
+        [HttpPost]
         public IActionResult Login(LoginModel model) 
         {
             var user = db.Users.FirstOrDefault(x=>x.Username == model.UserName && x.Password == model.Password);
@@ -55,17 +56,29 @@ namespace FilmDiziWebApp.Controllers
                         isAuthenticate = true;
                     }
                     HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                    if (isAuthenticate)
+                    if (isAuthenticate==true && identity.Claims.Where(c => c.Type == ClaimTypes.Role)
+                   .Select(c => c.Value).SingleOrDefault()=="A")
                     {
                         var principal = new ClaimsPrincipal(identity);
                         var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                        return RedirectToAction("Index", "User");
+                        return RedirectToAction("Index", "Admin");
                     }
-
+                    else if (isAuthenticate)
+                    {
+                        var principal = new ClaimsPrincipal(identity);
+                        var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(model.UserName), "Your name or password is wrong!");
+                    return View("Index", user);
                 }
             }
             return View("Login");
         } 
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();

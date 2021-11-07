@@ -14,5 +14,10 @@ namespace FilmDiziWebApp.Controllers
             TempData["error1"] = "You have no authorization to enter this page.";
             return RedirectToAction("Index","Home");
         }
+        public IActionResult AccessDenied()
+        {
+            TempData["error1"] = "You have no authorization to enter this page.";
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

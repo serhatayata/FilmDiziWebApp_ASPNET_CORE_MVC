@@ -1,5 +1,6 @@
 ﻿using Data.Concrete.EfCore;
 using Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,13 @@ using System.Threading.Tasks;
 
 namespace FilmDiziWebApp.Controllers
 {
+    [Authorize(Roles ="A")]
     public class AdminController : Controller
     {
-        private FilmDiziDbContext db;
-        public AdminController(FilmDiziDbContext _db)
-        {
-            db = _db;
-        }
+        EfUserRepository ef = new EfUserRepository();
         public IActionResult Index()
         {
-            var deger = db.Users.ToList();
+            var deger = ef.GetAll();
             return View(deger);
         }
     }

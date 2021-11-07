@@ -15,6 +15,28 @@ body {
 .pl-3 {
     padding-left: 30px;
 }
+.pr-3 {
+    padding-right:30px;
+}
 .details_info {
     text-align:justify;
+}
+.nav-link:hover {
+    color: lightslategrey !important;
+}
+.dataTable > thead > tr > th[class*="sort"]:after {
+    content: "" !important;
+}
+
+table.dataTable thead > tr > th.sorting_asc,
+table.dataTable thead > tr > th.sorting_desc,
+table.dataTable thead > tr > th.sorting,
+table.dataTable thead > tr > td.sorting_asc,
+table.dataTable thead > tr > td.sorting_desc,
+table.dataTable thead > tr > td.sorting {
+    padding-right: inherit;
+}
+#tbl1 th,#tbl1 td {
+    text-align:center;
+    vertical-align:middle;
 }

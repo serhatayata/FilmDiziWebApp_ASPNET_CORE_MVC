@@ -22,24 +22,21 @@
         <div class="collapse navbar-collapse pl-5" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/"><i class="fas fa-home"></i>&nbsp;Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown pl-3">
-                    <a class="nav-link text-white" asp-controller="Login" asp-action="Index">Login <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" asp-controller="Category" asp-action="Index"><i class="fas fa-list"></i>&nbsp;Categories <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown pl-3">
-                    <a class="nav-link text-white" asp-controller="Category" asp-action="Index">Categories <span class="sr-only">(current)</span></a>
-                </li>
-
             </ul>
             <div class="dropdown show my-2 my-sm-0">
                 <a class="btn btn-secondary dropdown-toggle home-dropdown" style="width:150px" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Settings
+                    <i class="fas fa-cog"></i>&nbsp;Settings
                 </a>
 
                 <div class="dropdown-menu home-dropdown-2" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="/Home/AboutUs">About</a>
-                    <a asp-controller="Login" asp-action="Logout" class="dropdown-item">Logout</a>
+                    <a class="dropdown-item" href="/Login/Index"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
+                    <a class="dropdown-item" href="/Register/Index"><i class="fas fa-file-signature"></i>&nbsp;Register</a>
+                    <a class="dropdown-item" href="/Home/AboutUs"><i class="fas fa-info-circle"></i>&nbsp;About</a>
                 </div>
             </div>
         </div>

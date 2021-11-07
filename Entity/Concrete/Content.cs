@@ -26,6 +26,7 @@ namespace Entity.Concrete
         public string Image { get; set; }
         [Required(ErrorMessage ="You have to choose if it is a movie or not.")]
         public bool IsItMovie { get; set; }
+        public bool isDeleted { get; set; }
         public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
     }

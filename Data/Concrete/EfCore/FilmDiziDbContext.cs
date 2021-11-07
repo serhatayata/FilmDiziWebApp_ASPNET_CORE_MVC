@@ -16,7 +16,7 @@ namespace Data.Concrete.EfCore
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-34G34T7\\SQLEXPRESS01;Initial Catalog=FilmDiziWebAppDB;Integrated Security=True", y => y.MigrationsAssembly("Data"));
         }
         public FilmDiziDbContext(DbContextOptions<FilmDiziDbContext> options):base(options)
         {

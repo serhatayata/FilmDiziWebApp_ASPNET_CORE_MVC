@@ -12,6 +12,6 @@ namespace Data.Concrete.EfCore
 {
     public class EfUserRepository:EfEntityRepositoryBase<User,FilmDiziDbContext>,IUserRepository
     {
-        
+         
     }
 }

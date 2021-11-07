@@ -22,10 +22,10 @@
         <div class="collapse navbar-collapse pl-5" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/"><i class="fas fa-house-user"></i>&nbsp;Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown pl-3">
-                    <a class="nav-link text-white" asp-controller="Category" asp-action="Index">Categories <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" asp-controller="Category" asp-action="Index"><i class="fas fa-list"></i>&nbsp;Categories <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <div class="dropdown show my-2 my-sm-0">
@@ -36,8 +36,8 @@
                     }
                 </a>
                 <div class="dropdown-menu home-dropdown-2" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="/Home/AboutUs">About</a>
-                    <a asp-controller="Login" asp-action="Logout" class="dropdown-item">Logout</a>
+                    <a class="dropdown-item" href="/Home/AboutUs"><i class="fas fa-info-circle"></i>&nbsp;About</a>
+                    <a asp-controller="Login" asp-action="Logout" class="dropdown-item"><i class="fas fa-level-down-alt"></i>&nbsp;Logout</a>
                 </div>
             </div>
         </div>

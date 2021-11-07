@@ -15,6 +15,10 @@ namespace FilmDiziWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        EfCategoryRepository ct = new EfCategoryRepository();
+        EfAboutUsRepository abt = new EfAboutUsRepository();
+        EfContentRepository cont = new EfContentRepository();
+        EfUserRepository usr = new EfUserRepository() ;
         FilmDiziDbContext db;
         public HomeController(FilmDiziDbContext _db)
         {
@@ -28,18 +32,18 @@ namespace FilmDiziWebApp.Controllers
                 {
                     if (id==true)
                     {
-                        var deger = db.Contents.Where(x => x.IsItMovie == true).ToList().OrderByDescending(x => x.AddedTime);
+                        var deger = cont.GetAll().Where(x => x.IsItMovie == true && x.isDeleted==false).ToList().OrderByDescending(x => x.AddedTime);
                         return View("Index", deger);
                     }
                     else
                     {
-                        var deger = db.Contents.Where(x => x.IsItMovie == false).ToList().OrderByDescending(x=>x.AddedTime);
+                        var deger = cont.GetAll().Where(x => x.IsItMovie == false && x.isDeleted == false).ToList().OrderByDescending(x=>x.AddedTime);
                         return View("Index", deger);
                     }
                 }
                 else if (db.Contents.Count() == 1)
                 {
-                    var deger = db.Contents.Where(x => x.IsItMovie == false).FirstOrDefault();
+                    var deger = cont.GetAll().Where(x => x.IsItMovie == true && x.isDeleted == false).FirstOrDefault();
                     return View("Index", deger);
                 }
                 else
@@ -49,13 +53,13 @@ namespace FilmDiziWebApp.Controllers
             }
             else
             {
-                var deger = db.Contents.ToList().OrderByDescending(x => x.AddedTime);
+                var deger = cont.GetAll().Where(x=>x.isDeleted==false).OrderByDescending(x => x.AddedTime);
                 return View(deger);
             }
         }
         public IActionResult Filter(string type,FilterViewModel f,string year)
         {
-            List<Content> deger=db.Contents.ToList();
+            IEnumerable<Content> deger = cont.GetAll().Where(x=>x.isDeleted==false);
             if (type=="true")
             {
                 deger = deger.Where(x => x.IsItMovie == true).ToList();
@@ -88,24 +92,19 @@ namespace FilmDiziWebApp.Controllers
 
         public IActionResult Categories()
         {
-            return View(db.Categories.ToList());
+            return View(ct.GetAll().Where(x=>x.isDeleted==false));
         }
 
         public IActionResult Details(int id)
         {
-            var deger = db.Contents.Where(x => x.ContentID == id).FirstOrDefault();
+            var deger = cont.Get(x=>x.ContentID==id && x.isDeleted==false);
             return View(deger);
         }
         public IActionResult AboutUs()
         {
-            var deger = db.AboutUss.ToList().FirstOrDefault();
+            var deger = abt.GetAll().FirstOrDefault();
             return View(deger);
         }
-
-
-
-
-        
 
     }
 }

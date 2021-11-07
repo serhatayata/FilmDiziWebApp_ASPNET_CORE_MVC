@@ -1,4 +1,5 @@
-﻿using Entity.Concrete;
+﻿using Data.Concrete.EfCore;
+using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,19 @@ namespace FilmDiziWebApp.Controllers
             return View(new User());
         }
         [HttpPost]
-        public IActionResult Index(User user)
+        public IActionResult Create(User user)
         {
+            EfUserRepository efUser = new EfUserRepository();
             if (ModelState.IsValid)
             {
-                RedirectToAction("Home", "Index");
+                user.Role = "B";
+                efUser.Add(user);
             }
             else
             {
                 return View("Index", user);
             }
-            return View();
+            return RedirectToAction("Index","Login");
         }
     }
 }

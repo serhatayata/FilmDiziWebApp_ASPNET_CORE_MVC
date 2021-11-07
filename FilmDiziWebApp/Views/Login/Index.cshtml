@@ -1,4 +1,5 @@
-﻿@{
+﻿@model User
+@{
     if (User.Identity.IsAuthenticated)
     {
         ViewData["Title"] = "Index";

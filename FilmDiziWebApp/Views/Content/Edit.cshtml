@@ -1,0 +1,58 @@
+﻿@model Content
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-sm-9">
+    <div class="bg-dark rounded text-white rounded pb-2">
+        <span class="list-group-item bg-info text-white">Add Category</span>
+        <form asp-controller="Content" asp-action="Edit" method="post" class="container p-3">
+            <input asp-for="AddedTime" hidden />
+            <input asp-for="isDeleted" hidden />
+            <input asp-for="ContentID" hidden />
+            <div class="form-group">
+                <label>Name</label>
+                <div><span class="text-danger" asp-validation-for="Name"></span></div>
+                <input asp-for="Name" class="form-control" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label>Information</label>
+                <div><span class="text-danger" asp-validation-for="Information"></span></div>
+                <textarea asp-for="Information" class="form-control" placeholder="Enter Information"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Image URL</label>
+                <div><span class="text-danger" asp-validation-for="Image"></span></div>
+                <input asp-for="Image" class="form-control" placeholder="Enter Image URL">
+            </div>
+            <div class="form-group">
+                <label>IMDB</label>
+                <div><span class="text-danger" asp-validation-for="IMBD"></span></div>
+                <input type="number" class="form-control" asp-for="IMBD" min="1" max="10" step=".01">
+            </div>
+            <div class="form-group">
+                <label>Year</label>
+                <div><span class="text-danger" asp-validation-for="Year"></span></div>
+                <input asp-for="Year" type="datetime" asp-format="{0:yyyy-MM-dd}" class="form-control" placeholder="Enter Year">
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <div><span class="text-danger" asp-validation-for="CategoryID"></span></div>
+                <select asp-for="CategoryID" asp-items="@ViewBag.CategoryList" class="form-select"></select>
+            </div>
+            <div class="form-group">
+                <label>Movie or Series</label>
+                <div><span class="text-danger" asp-validation-for="IsItMovie"></span></div>
+                <select asp-for="IsItMovie" asp-items="@ViewBag.movieorViewList" class="form-select"></select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-info">Edit</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace("Information");
+</script>

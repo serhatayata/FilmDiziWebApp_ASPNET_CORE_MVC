@@ -19,5 +19,6 @@ namespace Entity.Concrete
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime AddedTime { get; set; }
+        public bool isDeleted { get; set; }
     }
 }
