@@ -1,4 +1,5 @@
-﻿using Data.Concrete.EfCore;
+﻿using Data.Abstract;
+using Data.Concrete.EfCore;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,13 @@ namespace FilmDiziWebApp.Controllers
     [Authorize(Roles = "A")]
     public class CommentController : Controller
     {
-        EfUserRepository usr = new EfUserRepository();
-        EfContentCommentRepository cm = new EfContentCommentRepository();
-
+        private readonly IUserRepository usr;
+        private readonly IContentCommentRepository cm;
+        public CommentController(IUserRepository _usr,IContentCommentRepository _cm)
+        {
+            usr = _usr;
+            cm = _cm;
+        }
         
         public IActionResult Index()
         {

@@ -1,4 +1,5 @@
-﻿using Data.Concrete.EfCore;
+﻿using Data.Abstract;
+using Data.Concrete.EfCore;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +14,15 @@ namespace FilmDiziWebApp.Controllers
     [Authorize(Roles = "A")]
     public class ContentController : Controller
     {
-        EfContentRepository ef = new EfContentRepository();
-        EfCategoryRepository efCat = new EfCategoryRepository();
+
+        private readonly IContentRepository ef;
+        private readonly ICategoryRepository efCat;
+        public ContentController(IContentRepository _ef,ICategoryRepository _efCat)
+        {
+            ef = _ef;
+            efCat = _efCat;
+        }
+
         [AllowAnonymous]
         public IActionResult Index()
         {

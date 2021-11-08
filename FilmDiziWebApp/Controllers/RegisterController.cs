@@ -1,4 +1,5 @@
-﻿using Data.Concrete.EfCore;
+﻿using Data.Abstract;
+using Data.Concrete.EfCore;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,11 @@ namespace FilmDiziWebApp.Controllers
 {
     public class RegisterController : Controller
     {
+        private readonly IUserRepository efUser;
+        public RegisterController(IUserRepository _efUser)
+        {
+            efUser = _efUser;
+        }
         [HttpGet]
         public IActionResult Index()
         {
@@ -18,7 +24,6 @@ namespace FilmDiziWebApp.Controllers
         [HttpPost]
         public IActionResult Create(User user)
         {
-            EfUserRepository efUser = new EfUserRepository();
             if (ModelState.IsValid)
             {
                 user.Role = "B";

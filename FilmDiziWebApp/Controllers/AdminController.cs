@@ -1,4 +1,5 @@
-﻿using Data.Concrete.EfCore;
+﻿using Data.Abstract;
+using Data.Concrete.EfCore;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,14 @@ namespace FilmDiziWebApp.Controllers
     [Authorize(Roles ="A")]
     public class AdminController : Controller
     {
-        EfUserRepository ef = new EfUserRepository();
+        private readonly IUserRepository usr;
+        public AdminController(IUserRepository _usr)
+        {
+            usr = _usr;
+        }
         public IActionResult Index()
         {
-            var deger = ef.GetAll();
+            var deger = usr.GetAll();
             return View(deger);
         }
     }

@@ -13,7 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-
+using Data.Abstract;
 namespace FilmDiziWebApp
 {
     public class Startup
@@ -38,7 +38,11 @@ namespace FilmDiziWebApp
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddDbContext<FilmDiziDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), y => y.MigrationsAssembly("Data")));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-
+            services.AddSingleton<IUserRepository, EfUserRepository>();
+            services.AddSingleton<IAboutUsRepository, EfAboutUsRepository>();
+            services.AddSingleton<ICategoryRepository, EfCategoryRepository>();
+            services.AddSingleton<IContentCommentRepository, EfContentCommentRepository>();
+            services.AddSingleton<IContentRepository, EfContentRepository>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

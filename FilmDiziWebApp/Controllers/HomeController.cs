@@ -1,4 +1,5 @@
-﻿using Data.Concrete.EfCore;
+﻿using Data.Abstract;
+using Data.Concrete.EfCore;
 using Entity.Concrete;
 using FilmDiziWebApp.Models;
 using FilmDiziWebApp.ViewModels;
@@ -16,15 +17,20 @@ namespace FilmDiziWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        EfCategoryRepository ct = new EfCategoryRepository();
-        EfAboutUsRepository abt = new EfAboutUsRepository();
-        EfContentRepository cont = new EfContentRepository();
-        EfUserRepository usr = new EfUserRepository() ;
-        EfContentCommentRepository cm = new EfContentCommentRepository();
+        private readonly ICategoryRepository ct;
+        private readonly IAboutUsRepository abt;
+        private readonly IContentRepository cont;
+        private readonly IUserRepository usr;
+        private readonly IContentCommentRepository cm;
         FilmDiziDbContext db;
-        public HomeController(FilmDiziDbContext _db)
+        public HomeController(FilmDiziDbContext _db, IUserRepository _usr, IContentCommentRepository _cm,IContentRepository _cont, IAboutUsRepository _abt, ICategoryRepository _ct)
         {
             db = _db;
+            usr = _usr;
+            cm = _cm;
+            cont = _cont;
+            abt = _abt;
+            ct = _ct;
         }
         public IActionResult Index(bool? id)
         {
@@ -114,7 +120,7 @@ namespace FilmDiziWebApp.Controllers
 
         public IActionResult Details(int id)
         {
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity != null && User.Identity.IsAuthenticated ==true)
             {
                 var identity = (ClaimsIdentity)User.Identity;
                 string username = identity.Claims.ToList()[0].Value;
