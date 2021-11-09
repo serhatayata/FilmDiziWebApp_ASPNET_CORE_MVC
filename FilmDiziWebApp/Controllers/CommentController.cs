@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FilmDiziWebApp.Controllers
 {
-    [Authorize(Roles = "A")]
+    
     public class CommentController : Controller
     {
         private readonly IUserRepository usr;
@@ -20,7 +20,7 @@ namespace FilmDiziWebApp.Controllers
             usr = _usr;
             cm = _cm;
         }
-        
+        [Authorize(Roles = "A")]
         public IActionResult Index()
         {
             var comments = cm.GetAll(x=>x.isDeleted==false);
@@ -37,6 +37,7 @@ namespace FilmDiziWebApp.Controllers
             return RedirectToAction("Index", "Home");
         }
         [HttpGet]
+        [Authorize(Roles = "A")]
         public IActionResult Delete(int id)
         {
             var com = cm.Get(x => x.CommentID == id);
