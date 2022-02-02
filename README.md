@@ -2,8 +2,6 @@
 
 FilmDiziWebApp is a platform you can find the movies and series published in the website.
 
-![FilmDiziWebApp](https://r.resimlink.com/ae9ltbZ.gif)
-
 There are 3 types of users ;
 
 - Administrators
