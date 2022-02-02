@@ -1,6 +1,7 @@
 ### Overview
 
 FilmDiziWebApp is a platform you can find the movies and series published in the website.
+
 ![FilmDiziWebApp](https://i.hizliresim.com/89zi2xa.gif)
 
 
